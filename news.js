@@ -27,7 +27,8 @@ const displayData = categories => {
     })
 }
 
-loadData();
+
+const spinner = document.getElementById('spinner')
 
 const loadNews = (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
@@ -38,6 +39,7 @@ const loadNews = (category_id) => {
         .catch(error => {
             console.log('There is an Error to loading data', error)
         })
+    spinner.classList.remove('d-none')
 }
 
 
@@ -117,6 +119,7 @@ const displayNews = allNews => {
     
     `;
         allNewsContainer.appendChild(newsDiv);
+        spinner.classList.add('d-none')
     })
 
 
@@ -143,5 +146,6 @@ const displayModalData = (data) => {
 
 }
 // loadModalData()
+loadData();
 
 loadNews();
