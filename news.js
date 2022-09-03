@@ -29,7 +29,7 @@ const displayData = categories => {
 
 
 const spinner = document.getElementById('spinner')
-
+// spinner.classList.add('d-none')
 const loadNews = (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     // console.log(url)
