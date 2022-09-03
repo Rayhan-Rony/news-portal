@@ -29,10 +29,10 @@ const displayData = categories => {
 
 
 const spinner = document.getElementById('spinner')
-// spinner.classList.add('d-none')
+
 const loadNews = (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    // console.log(url)
+
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data))
@@ -44,7 +44,7 @@ const loadNews = (category_id) => {
 
 
 const displayNews = allNews => {
-    // console.log(allNews)
+
     allNews.sort(function (a, b) {
         return b.total_view - a.total_view;
     })
@@ -69,7 +69,7 @@ const displayNews = allNews => {
 
     }
     allNews.forEach(news => {
-        // console.log(news)
+
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
     <div class="card mb-3 p-3" >
@@ -135,17 +135,19 @@ const loadModalData = (IdNews) => {
         })
 }
 const displayModalData = (data) => {
-    // console.log(data)
+
     const modalTitle = document.getElementById('exampleModalLabel')
     modalTitle.innerText = `${data.author.name ? data.author.name : 'No data Found'}`
     const modalBody = document.getElementById('modal-body')
     modalBody.innerHTML = `
+    <img class="img-fluid"  src="${data.image_url}"/>
     <p>${data.author.published_date ? data.author.published_date : 'No Data Found'}</p>
     <p>${data.details.length > 300 ? data.details.slice(0, 300) + '...' : data.details}</p>
+
     `
 
 }
-// loadModalData()
+
 loadData();
 
 loadNews();
